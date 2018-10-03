@@ -58,7 +58,7 @@ namespace TCPServer
                     result = $"{Conversion.ConvertToOunces(number)} oz";
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
                 Console.WriteLine($"Input = {command} {number}");
                 Console.WriteLine($"Result = {result}");
 

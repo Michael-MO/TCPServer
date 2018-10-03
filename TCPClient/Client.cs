@@ -24,8 +24,8 @@ namespace TCPClient
                 using (StreamReader sr = new StreamReader(ns))
                 using (StreamWriter sw = new StreamWriter(ns))
                 {
-                    string customText = Console.ReadLine();
-                    sw.WriteLine(customText);
+                    string input = Console.ReadLine();
+                    sw.WriteLine(input);
                     sw.Flush();
 
                     string line = sr.ReadLine();
