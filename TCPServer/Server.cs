@@ -65,7 +65,7 @@ namespace TCPServer
                 sw.WriteLine(result);
                 sw.Flush();
             }
-            socket?.Close();
+            //socket?.Close();
         }
     }
 }
