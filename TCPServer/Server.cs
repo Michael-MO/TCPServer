@@ -47,7 +47,6 @@ namespace TCPServer
 
                 string command = request[0];
                 double number = Convert.ToDouble(request[1]);
-
                 string result = "";
 
                 if (command == "TOGRAM")
