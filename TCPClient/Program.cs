@@ -8,6 +8,8 @@ namespace TCPClient
         {
             Client client = new Client();
             client.Start();
+
+            Console.ReadLine();
         }
     }
 }

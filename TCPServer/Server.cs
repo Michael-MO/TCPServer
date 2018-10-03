@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConversionClass;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -40,41 +41,32 @@ namespace TCPServer
             using (StreamReader sr = new StreamReader(socket.GetStream()))
             using (StreamWriter sw = new StreamWriter(socket.GetStream()))
             {
-                String str = sr.ReadLine();
-                int words = CountWordNum(str);
+                string requestLine = sr.ReadLine();
 
-                Thread.Sleep(5000);
-                Console.WriteLine($"Input = {str}");
-                Console.WriteLine($"Number of words = {words}");
+                string[] request = requestLine.Split(' ');
 
-                sw.WriteLine(str);
-                sw.Flush();
-            }
-        }
+                string command = request[0];
+                double number = Convert.ToDouble(request[1]);
 
-        public int CountWordNum(string input)
-        {
-            if (input != "" || input != null)
-            {
-                int length = 0;
-                int words = 1;
+                string result = "";
 
-                while (length <= input.Length - 1)
+                if (command == "TOGRAM")
                 {
-                    if (input[length] == ' ' || input[length] == '\n' || input[length] == '\t')
-                    {
-                        words++;
-                    }
-
-                    length++;
+                    result = $"{Conversion.ConvertToGrams(number)} g";
+                }
+                else if (command == "TOOUNCES")
+                {
+                    result = $"{Conversion.ConvertToOunces(number)} oz";
                 }
 
-                return words;
+                Thread.Sleep(1000);
+                Console.WriteLine($"Input = {command} {number}");
+                Console.WriteLine($"Result = {result}");
+
+                sw.WriteLine(result);
+                sw.Flush();
             }
-            else
-            {
-                return 0;
-            }
+            socket?.Close();
         }
     }
 }
