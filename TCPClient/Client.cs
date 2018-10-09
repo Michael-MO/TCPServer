@@ -9,7 +9,7 @@ namespace TCPClient
 {
     public class Client
     {
-        private int _port = 7;
+        private const int PORT = 7;
 
         public Client()
         {
@@ -17,7 +17,7 @@ namespace TCPClient
 
         public void Start()
         {
-            using (TcpClient socket = new TcpClient(IPAddress.Loopback.ToString(), _port))
+            using (TcpClient socket = new TcpClient(IPAddress.Loopback.ToString(), PORT))
             {
                 NetworkStream ns = socket.GetStream();
 
